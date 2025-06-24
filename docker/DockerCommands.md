@@ -11,3 +11,9 @@ Inspect the Docker image:
 ```shell
 docker image inspect docker.io/library/spring-practice-gateway:0.0.1-SNAPSHOT
 ```
+
+Run the Docker image:
+
+```shell
+docker run spring-practice-gateway:0.0.1-SNAPSHOT
+```
