@@ -35,3 +35,15 @@ List running Docker containers:
 ```shell
 docker ps
 ```
+
+Tap into a background running Docker container:
+
+```shell
+docker logs -f <container_id>
+```
+
+Stop a running Docker container:
+
+```shell
+docker stop <container_id>
+```
