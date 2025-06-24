@@ -65,3 +65,15 @@ Restart a stopped Docker container by name. This will restore using the previous
 ```shell
 docker start spring-practice-gateway
 ```
+
+## Next: Generate Docker images
+
+-> spring-practice-gateway:0.0.1-SNAPSHOT
+
+-> spring-practice-auth-server:0.0.1-SNAPSHOT
+
+-> spring-practice-restmvc:0.0.1-SNAPSHOT
+
+-> spring-practice-reactive:0.0.1-SNAPSHOT
+
+-> spring-practice-reactive-mongo:0.0.1-SNAPSHOT
