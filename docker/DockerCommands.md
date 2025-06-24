@@ -23,3 +23,15 @@ Run the Docker image with port mapping:
 ```shell
 docker run -p 8080:8080 spring-practice-gateway:0.0.1-SNAPSHOT
 ```
+
+Run the Docker image in background:
+
+```shell
+docker run -d -p 8080:8080 spring-practice-gateway:0.0.1-SNAPSHOT
+```
+
+List running Docker containers:
+
+```shell
+docker ps
+```
