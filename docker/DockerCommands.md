@@ -47,3 +47,21 @@ Stop a running Docker container:
 ```shell
 docker stop <container_id>
 ```
+
+Name and Run the Docker image in background:
+
+```shell
+docker run --name spring-practice-gateway -d -p 8080:8080 spring-practice-gateway:0.0.1-SNAPSHOT
+```
+
+Stop a running Docker container by name:
+
+```shell
+docker stop spring-practice-gateway
+```
+
+Restart a stopped Docker container by name. This will restore using the previous settings.
+
+```shell
+docker start spring-practice-gateway
+```
