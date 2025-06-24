@@ -17,3 +17,9 @@ Run the Docker image:
 ```shell
 docker run spring-practice-gateway:0.0.1-SNAPSHOT
 ```
+
+Run the Docker image with port mapping:
+
+```shell
+docker run -p 8080:8080 spring-practice-gateway:0.0.1-SNAPSHOT
+```
