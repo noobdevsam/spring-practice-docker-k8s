@@ -25,3 +25,11 @@ docker run -d --name spring-practice-auth-server -h spring-practice-auth-server 
 docker run --name spring-practice-restmvc -d -e DB_HOST_ADDRESS=host.docker.internal -e SERVER_PORT=8080 -p 8081:8080 --link spring-practice-auth-server:spring-practice-auth-server -e SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://spring-practice-auth-server:9000 spring-practice-restmvc:0.0.1-SNAPSHOT --spring.profiles.active=localdb
 docker run -d --name spring-practice-gateway --link spring-practice-auth-server:spring-practice-auth-server --link spring-practice-restmvc:spring-practice-restmvc -p 8080:8080 spring-practice-gateway:0.0.1-SNAPSHOT --spring.profiles.active=docker
 ```
+
+4. Pull and run MySQL Docker image and rerun [spring-practice-restmvc] with MySQL docker database:
+
+```shell
+docker pull mysql:latest
+docker run --name my-mysql-db -h my-mysql-db -d -e MYSQL_USER=restadmin -e MYSQL_PASSWORD=password -e MYSQL_DATABASE=restdb -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 mysql:latest
+docker run --name spring-practice-restmvc -d -e DB_HOST_ADDRESS=my-mysql-db -e SERVER_PORT=8080 -p 8081:8080 --link spring-practice-auth-server:spring-practice-auth-server -e SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://spring-practice-auth-server:9000 spring-practice-restmvc:0.0.1-SNAPSHOT --spring.profiles.active=localdb
+```
