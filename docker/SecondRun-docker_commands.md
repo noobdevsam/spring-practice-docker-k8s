@@ -37,6 +37,6 @@ docker run --name spring-practice-restmvc -d -e DB_HOST_ADDRESS=my-mysql-db -e S
 5. Run [spring-practice-gateway] with linked [spring-practice-auth-server] and [spring-practice-reactive]:
 
 ```shell
-docker run --name spring-practice-reactive -d -e ISSUER_URI=http://spring-practice-auth-server:9000 --link spring-practice-auth-server:spring-practice-auth-server -p 8082:8080 spring-practice-reactive:0.0.1-SNAPSHOT
+docker run --name spring-practice-reactive -d -e ISSUER_URI=http://spring-practice-auth-server:9000 -e SERVER_PORT=8080 --link spring-practice-auth-server:spring-practice-auth-server -p 8082:8080 spring-practice-reactive:0.0.1-SNAPSHOT
 docker run -d --name spring-practice-gateway --link spring-practice-auth-server:spring-practice-auth-server --link spring-practice-restmvc:spring-practice-restmvc --link spring-practice-reactive:spring-practice-reactive -p 8080:8080 spring-practice-gateway:0.0.1-SNAPSHOT --spring.profiles.active=docker
 ```
