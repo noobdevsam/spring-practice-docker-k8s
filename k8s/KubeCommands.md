@@ -177,6 +177,33 @@ kubectl apply -f reactive-service.yaml
 Changes can be made to the [spring-practice-reactive] deployment and service configs before applying to include
 environment variables as needed.
 
+### Create Deployment for Spring-Practice-Reactive-Mongo:
+
+```bash
+kubectl create deployment spring-practice-reactive-mongo --image=spring-practice-reactive-mongo:0.0.1-SNAPSHOT --dry-run=client -o yaml > reactive-mongo-deployment.yaml
+```
+
+### Apply the Spring-Practice-Reactive-Mongo Deployment:
+
+```bash
+kubectl apply -f reactive-mongo-deployment.yaml
+```
+
+### Create a Service for Spring-Practice-Reactive-Mongo:
+
+```bash
+kubectl create service clusterip spring-practice-reactive-mongo --tcp=8080:8080 --dry-run=client -o yaml > reactive-mongo-service.yaml
+```
+
+### Apply the Spring-Practice-Reactive-Mongo Service:
+
+```bash
+kubectl apply -f reactive-mongo-service.yaml
+```
+
+Changes can be made to the [spring-practice-reactive-mongo] deployment and service configs before applying to include
+environment variables as needed.
+
 ### Port Forward to access Spring-Practice-Gateway:
 
 After deploying the Spring-Practice-Gateway, you can access it via port forwarding.
