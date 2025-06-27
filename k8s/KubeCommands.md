@@ -53,3 +53,39 @@ kubectl delete service my-mongo-db
 kubectl delete deployment my-mongo-db
 ```
 
+### Create Deployment for MySQL:
+
+```bash
+kubectl create deployment my-mysql-db --image=mysql:latest --dry-run=client -o yml -> mysql-deployment.yml
+```
+
+### Apply the MySQL Deployment:
+
+```bash
+kubectl apply -f mysql-deployment.yml
+```
+
+### Create a Service for MySQL:
+
+```bash
+kubectl create service clusterip my-mysql-db --tcp=3306:3306 --dry-run=client -o yml -> mysql-service.yml
+```
+
+### Apply the MySQL Service:
+
+```bash
+kubectl apply -f mysql-service.yml
+```
+
+### View logs for MySQL:
+
+```bash
+kubectl logs my-mysql-db-<pod-id>
+```
+
+### Delete Service and Deployment for MySQL:
+
+```bash
+kubectl delete service my-mysql-db
+kubectl delete deployment my-mysql-db
+```
