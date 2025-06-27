@@ -9,3 +9,8 @@ services:
       MYSQL_PASSWORD: password
     expose:
       - "3306"
+  my-mongo-db:
+    container_name: my-mongo-db
+    image: mongo:latest
+    expose:
+      - "27017"
