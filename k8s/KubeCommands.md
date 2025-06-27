@@ -150,6 +150,33 @@ kubectl apply -f restmvc-service.yaml
 Changes can be made to the [spring-practice-restmvc] deployment and service configs before applying to include
 environment variables as needed.
 
+### Create Deployment for Spring-Practice-Reactive:
+
+```bash
+kubectl create deployment spring-practice-reactive --image=spring-practice-reactive:0.0.1-SNAPSHOT --dry-run=client -o yaml > reactive-deployment.yaml
+```
+
+### Apply the Spring-Practice-Reactive Deployment:
+
+```bash
+kubectl apply -f reactive-deployment.yaml
+```
+
+### Create a Service for Spring-Practice-Reactive:
+
+```bash
+kubectl create service clusterip spring-practice-reactive --tcp=8080:8080 --dry-run=client -o yaml > reactive-service.yaml
+```
+
+### Apply the Spring-Practice-Reactive Service:
+
+```bash
+kubectl apply -f reactive-service.yaml
+```
+
+Changes can be made to the [spring-practice-reactive] deployment and service configs before applying to include
+environment variables as needed.
+
 ### Port Forward to access Spring-Practice-Gateway:
 
 After deploying the Spring-Practice-Gateway, you can access it via port forwarding.
