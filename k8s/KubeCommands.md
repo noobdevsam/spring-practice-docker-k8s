@@ -19,7 +19,7 @@ kubectl get all -o wide
 ### Create Deployment for MongoDB:
 
 ```bash
-kubectl create deployment my-mongo-db --image=mongo:latest --dry-run=client -o yml -> mongo-deployment.yml
+kubectl create deployment my-mongo-db --image=mongo:latest --dry-run=client -o yml > mongo-deployment.yml
 ```
 
 ### Apply the MongoDB Deployment:
@@ -31,7 +31,7 @@ kubectl apply -f mongo-deployment.yml
 ### Create a Service for MongoDB:
 
 ```bash
-kubectl create service clusterip my-mongo-db --tcp=27017:27017 --dry-run=client -o yml -> mongo-service.yml
+kubectl create service clusterip my-mongo-db --tcp=27017:27017 --dry-run=client -o yml > mongo-service.yml
 ```
 
 ### Apply the MongoDB Service:
@@ -59,7 +59,7 @@ kubectl delete deployment my-mongo-db
 ### Create Deployment for MySQL:
 
 ```bash
-kubectl create deployment my-mysql-db --image=mysql:latest --dry-run=client -o yml -> mysql-deployment.yml
+kubectl create deployment my-mysql-db --image=mysql:latest --dry-run=client -o yml > mysql-deployment.yml
 ```
 
 ### Apply the MySQL Deployment:
@@ -71,7 +71,7 @@ kubectl apply -f mysql-deployment.yml
 ### Create a Service for MySQL:
 
 ```bash
-kubectl create service clusterip my-mysql-db --tcp=3306:3306 --dry-run=client -o yml -> mysql-service.yml
+kubectl create service clusterip my-mysql-db --tcp=3306:3306 --dry-run=client -o yml > mysql-service.yml
 ```
 
 ### Apply the MySQL Service:
@@ -99,7 +99,7 @@ kubectl delete deployment my-mysql-db
 ### Create Deployment for Spring-Practice-Auth-Server:
 
 ```bash
-kubectl create deployment spring-practice-auth-server --image=spring-practice-auth-server:0.0.1-SNAPSHOT --dry-run=client -o yml -> auth-server-deployment.yml
+kubectl create deployment spring-practice-auth-server --image=spring-practice-auth-server:0.0.1-SNAPSHOT --dry-run=client -o yml > auth-server-deployment.yml
 ```
 
 ### Apply the Spring-Practice-Auth-Server Deployment:
@@ -111,7 +111,7 @@ kubectl apply -f auth-server-deployment.yml
 ### Create a Service for Spring-Practice-Auth-Server:
 
 ```bash
-kubectl create service clusterip spring-practice-auth-server --tcp=9000:9000 --dry-run=client -o yml -> auth-server-service.yml
+kubectl create service clusterip spring-practice-auth-server --tcp=9000:9000 --dry-run=client -o yml > auth-server-service.yml
 ```
 
 ### Apply the Spring-Practice-Auth-Server Service:
