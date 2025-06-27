@@ -1,0 +1,11 @@
+services:
+  my-mysql-db:
+    container_name: my-mysql-db
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: restdb
+      MYSQL_USER: restadmin
+      MYSQL_PASSWORD: password
+    expose:
+      - "3306"
