@@ -40,6 +40,12 @@ kubectl create service clusterip my-mongo-db --tcp=27017:27017 --dry-run=client 
 kubectl apply -f mongo-service.yml
 ```
 
+### View logs for MongoDB:
+
+```bash
+kubectl logs my-mongo-db-<pod-id>
+```
+
 ### Delete Service and Deployment for MongoDB:
 
 ```bash
