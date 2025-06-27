@@ -42,3 +42,14 @@ services:
       - ISSUER_URI=http://spring-practice-auth-server:9000
     expose:
       - "8080"
+  spring-practice-reactive-mongo:
+    container_name: spring-practice-reactive-mongo
+    image: spring-practice-reactive-mongo:0.0.1-SNAPSHOT
+    environment:
+      - SERVER_PORT=8080
+      - OAUTH2_ISSUER_URI=http://spring-practice-auth-server:9000
+      - MONGODB_HOST=my-mongo-db
+    expose:
+      - "8080"
+    depends_on:
+      - my-mongo-db
