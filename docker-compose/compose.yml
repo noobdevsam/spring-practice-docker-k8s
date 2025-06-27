@@ -1,55 +1,69 @@
 services:
-  my-mysql-db:
-    container_name: my-mysql-db
-    image: mysql:latest
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=restdb
-      - MYSQL_USER=restadmin
-      - MYSQL_PASSWORD=password
-    expose:
-      - "3306"
-  my-mongo-db:
-    container_name: my-mongo-db
-    image: mongo:latest
-    expose:
-      - "27017"
-  spring-practice-auth-server:
-    container_name: spring-practice-auth-server
-    hostname: spring-practice-auth-server
-    image: spring-practice-auth-server:0.0.1-SNAPSHOT
-    environment:
-      - JWT-ISSUER-HOST=spring-practice-auth-server
-    expose:
-      - "9000"
-  spring-practice-restmvc:
-    container_name: spring-practice-restmvc
-    image: spring-practice-restmvc:0.0.1-SNAPSHOT
-    environment:
-      - SPRING_PROFILES_ACTIVE=localdb
-      - SERVER_PORT=8080
-      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://spring-practice-auth-server:9000
-      - DB_HOST_ADDRESS=my-mysql-db
-    expose:
-      - "8080"
-    depends_on:
-      - my-mysql-db
-  spring-practice-reactive:
-    container_name: spring-practice-reactive
-    image: spring-practice-reactive:0.0.1-SNAPSHOT
-    environment:
-      - SERVER_PORT=8080
-      - ISSUER_URI=http://spring-practice-auth-server:9000
-    expose:
-      - "8080"
-  spring-practice-reactive-mongo:
-    container_name: spring-practice-reactive-mongo
-    image: spring-practice-reactive-mongo:0.0.1-SNAPSHOT
-    environment:
-      - SERVER_PORT=8080
-      - OAUTH2_ISSUER_URI=http://spring-practice-auth-server:9000
-      - MONGODB_HOST=my-mongo-db
-    expose:
-      - "8080"
-    depends_on:
-      - my-mongo-db
+    my-mysql-db:
+        container_name: my-mysql-db
+        image: mysql:latest
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=restdb
+            - MYSQL_USER=restadmin
+            - MYSQL_PASSWORD=password
+        expose:
+            - "3306"
+    my-mongo-db:
+        container_name: my-mongo-db
+        image: mongo:latest
+        expose:
+            - "27017"
+    spring-practice-auth-server:
+        container_name: spring-practice-auth-server
+        hostname: spring-practice-auth-server
+        image: spring-practice-auth-server:0.0.1-SNAPSHOT
+        environment:
+            - JWT-ISSUER-HOST=spring-practice-auth-server
+        expose:
+            - "9000"
+    spring-practice-restmvc:
+        container_name: spring-practice-restmvc
+        image: spring-practice-restmvc:0.0.1-SNAPSHOT
+        environment:
+            - SPRING_PROFILES_ACTIVE=localdb
+            - SERVER_PORT=8080
+            - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://spring-practice-auth-server:9000
+            - DB_HOST_ADDRESS=my-mysql-db
+        expose:
+            - "8080"
+        depends_on:
+            - my-mysql-db
+    spring-practice-reactive:
+        container_name: spring-practice-reactive
+        image: spring-practice-reactive:0.0.1-SNAPSHOT
+        environment:
+            - SERVER_PORT=8080
+            - ISSUER_URI=http://spring-practice-auth-server:9000
+        expose:
+            - "8080"
+    spring-practice-reactive-mongo:
+        container_name: spring-practice-reactive-mongo
+        image: spring-practice-reactive-mongo:0.0.1-SNAPSHOT
+        environment:
+            - SERVER_PORT=8080
+            - OAUTH2_ISSUER_URI=http://spring-practice-auth-server:9000
+            - MONGODB_HOST=my-mongo-db
+        expose:
+            - "8080"
+        depends_on:
+            - my-mongo-db
+    spring-practice-gateway:
+        container_name: spring-practice-gateway
+        image: spring-practice-gateway:0.0.1-SNAPSHOT
+        environment:
+            - SPRING_PROFILES_ACTIVE=docker
+        expose:
+            - "8080"
+        ports:
+            - "8080:8080"
+        depends_on:
+            - spring-practice-auth-server
+            - spring-practice-restmvc
+            - spring-practice-reactive
+            - spring-practice-reactive-mongo
