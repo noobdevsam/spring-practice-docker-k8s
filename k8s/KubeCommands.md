@@ -123,6 +123,30 @@ kubectl apply -f auth-server-service.yaml
 Changes can be made to the [spring-practice-auth-server] deployment and service configs before applying to include
 environment variables as needed.
 
+### Create Deployment for Spring-Practice-RestMvc:
+
+```bash
+kubectl create deployment spring-practice-restmvc --image=spring-practice-restmvc:0.0.1-SNAPSHOT --dry-run=client -o yaml > restmvc-deployment.yaml
+```
+
+### Apply the Spring-Practice-RestMvc Deployment:
+
+```bash
+kubectl apply -f restmvc-deployment.yaml
+```
+
+### Create a Service for Spring-Practice-RestMvc:
+
+```bash
+kubectl create service clusterip spring-practice-restmvc --tcp=8080:8080 --dry-run=client -o yaml > restmvc-service.yaml
+```
+
+### Apply the Spring-Practice-RestMvc Service:
+
+```bash
+kubectl apply -f restmvc-service.yaml
+```
+
 ### Port Forward to access Spring-Practice-Gateway:
 
 After deploying the Spring-Practice-Gateway, you can access it via port forwarding.
