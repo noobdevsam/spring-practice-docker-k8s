@@ -147,6 +147,9 @@ kubectl create service clusterip spring-practice-restmvc --tcp=8080:8080 --dry-r
 kubectl apply -f restmvc-service.yaml
 ```
 
+Changes can be made to the [spring-practice-restmvc] deployment and service configs before applying to include
+environment variables as needed.
+
 ### Port Forward to access Spring-Practice-Gateway:
 
 After deploying the Spring-Practice-Gateway, you can access it via port forwarding.
