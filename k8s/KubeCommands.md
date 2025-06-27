@@ -122,3 +122,12 @@ kubectl apply -f auth-server-service.yaml
 
 Changes can be made to the [spring-practice-auth-server] deployment and service configs before applying to include
 environment variables as needed.
+
+### Port Forward to access Spring-Practice-Gateway:
+
+After deploying the Spring-Practice-Gateway, you can access it via port forwarding.
+This allows you to interact with the service locally.
+
+```bash
+kubectl port-forward service/spring-practice-gateway 8080:8080
+```
