@@ -3,10 +3,10 @@ services:
     container_name: my-mysql-db
     image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: restdb
-      MYSQL_USER: restadmin
-      MYSQL_PASSWORD: password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=restdb
+      - MYSQL_USER=restadmin
+      - MYSQL_PASSWORD=password
     expose:
       - "3306"
   my-mongo-db:
@@ -19,6 +19,18 @@ services:
     hostname: spring-practice-auth-server
     image: spring-practice-auth-server:0.0.1-SNAPSHOT
     environment:
-      JWT-ISSUER-HOST: spring-practice-auth-server
+      - JWT-ISSUER-HOST=spring-practice-auth-server
     expose:
       - "9000"
+  spring-practice-restmvc:
+    container_name: spring-practice-restmvc
+    image: spring-practice-restmvc:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_PROFILES_ACTIVE=localdb
+      - SERVER_PORT=8080
+      - SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI=http://spring-practice-auth-server:9000
+      - DB_HOST_ADDRESS=my-mysql-db
+    expose:
+      - "8080"
+    depends_on:
+      - my-mysql-db
